@@ -1,0 +1,89 @@
+body {
+    background-color: #000;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+body * {
+    z-index: 20;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+#light {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+}
+
+.article {
+    position: relative;
+    font-size: 24px;
+    width: 1440px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 25;
+    /* 增加 z-index 值 */
+}
+
+.image-container:hover::before {
+    background: radial-gradient(circle 250px at var(--x, 50%) var(--y, 50%), transparent 0%, rgba(0, 0, 0, 0.99) 70%, #000 100%);
+}
+
+.image-container .article-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.renwu-link {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    z-index: 30;
+    /* 确保链接在最上层 */
+    width: 80px;
+    height: auto;
+}
+
+.renwu {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0);
+    /* 初始状态设置为黑色 */
+    transition: filter 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+.renwu-link:hover .renwu {
+    filter: brightness(1);
+    /* 鼠标悬停时恢复正常亮度 */
+}
+
+.article * {
+    margin-bottom: 20px;
+}
