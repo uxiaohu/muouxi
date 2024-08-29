@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./shouye/index.css" />
+    <title>首页</title>
+</head>
+
+<body>
+    <div id="light"></div>
+    <article class="article">
+        <div class="image-container">
+            <img src="./shouye/img/首页.png" alt="" class="article-image">
+            <a href="./xuzhang/xuzhang.html" class="renwu-link">
+                <img class="renwu" src="./shouye/img/首页人物 1.png" alt="">
+            </a>
+        </div>
+    </article>
+    <script>
+        document.querySelector('.image-container').addEventListener('mousemove', function(e) {
+            var rect = this.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            this.style.setProperty('--x', x + 'px');
+            this.style.setProperty('--y', y + 'px');
+        });
+
+        // 添加以下代码
+        document.querySelector('.renwu-link').addEventListener('mouseenter', function() {
+            this.querySelector('.renwu').style.filter = 'brightness(1)';
+        });
+
+        document.querySelector('.renwu-link').addEventListener('mouseleave', function() {
+            this.querySelector('.renwu').style.filter = 'brightness(0)';
+        });
+    </script>
+</body>
+
+</html>
